@@ -1,0 +1,60 @@
+div.simple-tree.register-url-list {
+    max-height: 184px;
+    overflow-y: auto;
+    padding: 16px 24px 0 0;
+    background: #E9F1F5;
+}
+div.simple-tree.register-url-list ul {
+    padding-left: 24px;
+    list-style: none;
+    position: relative;
+}
+div.simple-tree.register-url-list ul ul {
+    border-left: 1px solid #CAD8DE;
+    margin-left: 6px;
+    padding-left: 20px;
+    display: none;
+}
+
+div.simple-tree.register-url-list ul label {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 8px;
+}
+
+div.simple-tree.register-url-list input {
+    margin: 0;
+    z-index: 999;
+    position: relative;
+}
+
+div.simple-tree.register-url-list ul .register-dropdown {
+    position: relative;
+}
+.register-text {
+    display: flex;
+    align-items: center;
+}
+div.simple-tree.register-url-list ul .register-text p {
+    color: #ABBCC4;
+    margin: -7px 0 0;
+    position: absolute;
+    left: -4px;
+    cursor: pointer;
+}
+div.simple-tree.register-url-list::-webkit-scrollbar {
+    width: 10px;
+}
+div.simple-tree.register-url-list::-webkit-scrollbar-track {
+    background: #cad8de;
+}
+div.simple-tree.register-url-list::-webkit-scrollbar-thumb {
+    background: #abbcc4;
+    border-radius: 25px;
+}
+div.simple-tree.register-url-list .register-show > ul {
+    display: block;
+}
+div.simple-tree.register-url-list ul .register-text p.active i:before {
+    content: "\f0d8";
+}

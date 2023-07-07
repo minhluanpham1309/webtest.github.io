@@ -1,0 +1,52 @@
+/*! $.simpleTreePicker CSS
+ @version 1.0.0
+ @author Alex Meub
+ @license WTFPL http://www.wtfpl.net/about/
+*/
+
+div.simple-tree{
+  list-style: none;
+  margin: 10px;
+  padding: 0;
+}
+div.simple-tree ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+div.simple-tree li {
+margin: 0;
+padding: 0;
+line-height: normal;
+text-align: left;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+div.simple-tree input {
+  cursor:pointer;
+  margin: 0 5px 0 0;
+}
+div.simple-tree label {
+  cursor:pointer;
+}
+div.simple-tree li i.tree-icon {
+display: inline-block;
+text-decoration: none;
+width: 18px;
+height: 18px;
+margin: 0 0 0 0;
+padding: 0;
+}
+div.simple-tree .subtree{
+margin-left: 20px; display: block;
+}
+div.simple-tree .right-caret{
+cursor:pointer;
+}
+div.simple-tree .right-down-caret{
+cursor:pointer;
+}
