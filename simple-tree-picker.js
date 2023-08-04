@@ -94,8 +94,10 @@
                                 '<input type="checkbox" name="checkbox-' + this.NamePath + '" data-path="'+ this.NamePath +'" id="checkbox-' + this.Name + '"><label for="checkbox-' + this.NamePath + '" id="' + this.Name + '">' + this.Name + '</label>' + 
                             '</div>';
                     } else {
+                        t += '<div>';
                         t += '<i class="no-caret" id="icon-' + i + '"></i>';
                         t += '<input type="checkbox" name="checkbox-' + this.NamePath + '" data-path="'+ this.NamePath +'" id="checkbox-' + this.Name + '"><label for="checkbox-' + this.NamePath + '" id="' + this.Name + '">' + this.Name + '</label>';
+                        t += '</div>'
                     }
                     i++;
                     t += buildSubTree(this.Children, t, i);
@@ -117,9 +119,9 @@
                         var childli = $(this);
                         var hasChildUl = !! childli.children("ul.subtree").length;
                         var childCheckbox = childli.children().children('input[type="checkbox"]');
-                        if (!hasChildUl) {
-                            childCheckbox = childli.children('input[type="checkbox"]');
-                        }
+                        // if (!hasChildUl) {
+                        //     childCheckbox = childli.children('input[type="checkbox"]');
+                        // }
                         
                         childCheckbox.prop("checked", checked);
                         // If Parent state is known, child cannot be indeterminate
@@ -210,14 +212,14 @@
                 $(this.element).find('li').each(function(){
                     var li = $(this),
                         parentLi = li.parent() && li.parent().parent() ?  li.parent().parent() : null,
-                        parentLiIsChecked = parentLi ? parentLi.children("input").prop("checked") : false;
+                        parentLiIsChecked = parentLi ? parentLi.children().children("input").prop("checked") : false;
                     if (parentLiIsChecked) {
                         li.parent().parent().children("ul").children("li").each(function() {
                             if ($(this).children("ul").length === 0)
-                                valuesSet.add( $(this).children("input").attr("data-path") );
+                                valuesSet.add( $(this).children().children("input").attr("data-path") );
                         });
-                    } else if (!parentLiIsChecked && $(this).children("input").prop("checked") && li.children("ul").length === 0){
-                        valuesSet.add( $(this).children("input").attr("data-path") );
+                    } else if (!parentLiIsChecked && $(this).children().children("input").prop("checked") && li.children("ul").length === 0){
+                        valuesSet.add( $(this).children().children("input").attr("data-path") );
                     }
                         
                 });
@@ -229,9 +231,9 @@
                 $(this.element).find('li').each(function(){
                     var li = $(this),
                         parentLi = li.parent() && li.parent().parent() ?  li.parent().parent() : null,
-                        parentLiIsChecked = parentLi ? parentLi.children("input").prop("checked") : false;
-                    if( !parentLiIsChecked && $(this).children("input").prop("checked") )                  
-                        displayArray.push( $(this).children("label").text() );                    
+                        parentLiIsChecked = parentLi ? parentLi.children().children("input").prop("checked") : false;
+                    if( !parentLiIsChecked && $(this).children().children("input").prop("checked") )                  
+                        displayArray.push( $(this).children().children("label").text() );                    
                 });
             return displayArray;
         },
