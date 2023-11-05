@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jsTree Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.14/themes/default/style.min.css" />
+    <style>
+        .jstree-themeicon {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="jstree"></div>
+    <!-- <button id="getPath">Get Path</button>
+    <div id="pathResult"></div>
+    <button id="generateUniqueURLs">Generate Unique URLs</button>
+    <div id="uniqueURLsResult"></div> -->
+
+    <div id="selectedNodePath"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.14/jstree.min.js"></script>
+
+    <!-- <script>
+        const data = [
+            "https://mieru-ca.com/blog/twitter_image-size/",
+            "https://mieru-ca.com/blog/customer_journey/",
+            "https://mieru-ca.com/heatmap/blog/what-is-mockup/",
+            "https://mieru-ca.com/blog/",
+            "https://mieru-ca.com/",
+            "https://mieru-ca.com/heatmap/what-is-heatmap/",
+            "https://mieru-ca.com/heatmap/what-is-heatmap/abc/"
+        ];
+
+        function createTreeDataWithIsLeaf(data) {
+            const treeData = [];
+
+            function buildTree(currentNode, parts, isLeaf) {
+                if (parts.length === 0) {
+                    return; // Hết phần tử để thêm vào cây
+                }
+
+                let part = parts.shift();
+                const existingNode = currentNode.find(node => node.text === part);
+                if (part === '') {
+                    part = parts[0];
+                }
+
+                if (existingNode) {
+                    buildTree(existingNode.children, parts, isLeaf);
+                } else {
+                    const newNode = {
+                        text: part,
+                        children: [],
+                    };
+
+                    if (isLeaf) {
+                        newNode.is_leaf = true;
+                    }
+
+                    currentNode.push(newNode);
+                    buildTree(newNode.children, parts, isLeaf);
+                }
+            }
+
+            data.forEach(url => {
+                const urlRemoveProtocol = removeProtocol(url);
+                const parts = urlRemoveProtocol.split('/'); // Tách URL thành các phần
+                const isLeaf = true; // Tất cả các nút là leaf node
+
+                buildTree(treeData, parts, isLeaf);
+            });
+
+            return treeData;
+        }
+
+
+        
+
+        function removeProtocol(url) {
+            return url.replace(/^https?:\/\//, '');
+        }
+
+        function constructURL() {
+            const checkedNodes = $('#jstree').jstree(true).get_checked(true);
+            const selectedURLParts = checkedNodes.map(node => node.text).join('/');
+            const constructedURL = `https://${selectedURLParts}`;
+            $('#constructedURL').text('Constructed URL: ' + constructedURL);
+        }
+
+        // Mark parent nodes as leaves
+        function markParentsAsLeaves(node) {
+            if (node.children.length === 0) {
+                node.is_leaf = true;
+            }
+            node.children.forEach(child => markParentsAsLeaves(child));
+        }
+
+        // const treeData = createTreeData(data);
+
+        $(function () {
+            const jstree = $('#jstree');
+            jstree.jstree({
+                'core': {
+                    'data': createTreeDataWithIsLeaf(data),
+                },
+                'plugins': ['checkbox'], // Enable the checkbox plugin
+            });
+
+            $('#getPath').on('click', function () {
+                const selectedNode = $('#jstree').jstree(true).get_selected(true);
+                if (selectedNode.length > 0) {
+                    const path = $('#jstree').jstree(true).get_path(selectedNode[0], '/');
+                    $('#pathResult').text('Path: ' + path);
+                } else {
+                    $('#pathResult').text('No node selected.');
+                }
+            });
+
+            $('#generateUniqueURLs').on('click', function () {
+                const checkedNodes = $('#jstree').jstree(true).get_checked(true);
+                const uniqueURLs = [];
+
+                for (const node of checkedNodes) {
+                    if (node.is_leaf) {
+                        // Generate a URL based on checked leaf node
+                        const nodePath = $('#jstree').jstree(true).get_path(node, '/').join('/');
+                        uniqueURLs.push(`https://${nodePath}`);
+                    }
+                }
+
+                const result = [...new Set(uniqueURLs)]; // Remove duplicates
+                $('#uniqueURLsResult').html('Unique URLs: <br>' + result.join('<br>'));
+            });
+
+            jstree.on('changed.jstree', function (e, data) {
+                const checkedNodes = jstree.jstree(true).get_checked(true);
+                const selectedNodePaths = [];
+
+                for (const node of checkedNodes) {
+                    selectedNodePaths.push(getNodePath(node));
+                }
+
+                $('#selectedNodePath').html('Selected Node Paths:<br>' + selectedNodePaths.join('<br>'));
+            });
+
+            // Hàm để lấy đường dẫn của node
+            function getNodePath(node) {
+                const pathSegments = [];
+
+                while (node.parent !== '#') {
+                    pathSegments.unshift(node.text);
+                    node = jstree.jstree(true).get_node(node.parent);
+                }
+
+                return '/' + pathSegments.join('/');
+            }
+
+        });
+    </script> -->
+
+    <script src="test-tree.js"></script>
+</body>
+</html>
+
+
